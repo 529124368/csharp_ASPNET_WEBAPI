@@ -5,8 +5,8 @@ namespace dotnet.Services;
 public class StudentService
 {
     private static Dictionary<int,Student> box=new Dictionary<int, Student>();
-    private readonly ILogger<WeatherForecastController> _logger;
-    public StudentService(ILogger<WeatherForecastController> logger)
+    private readonly ILogger<LszController> _logger;
+    public StudentService(ILogger<LszController> logger)
     {
         _logger = logger;
         Console.WriteLine("StudentService创建了");
@@ -56,6 +56,7 @@ public class StudentService
         return box;
     }
 
+    #region 数据检测
     private bool checkData(Student s)
     {
         var res = box.FirstOrDefault(v => v.Value.name == s.name);
@@ -65,4 +66,5 @@ public class StudentService
         }
         return false;
     }
+    #endregion
 }
