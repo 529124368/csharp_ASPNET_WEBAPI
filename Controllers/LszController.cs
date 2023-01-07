@@ -1,9 +1,7 @@
-using dotnet.Models;
 using dotnet.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+using Models;
 using SqlSugar;
-using System.Reflection.Metadata.Ecma335;
 
 namespace dotnet.Controllers;
 
@@ -36,23 +34,6 @@ public class LszController : ControllerBase
     }
     #endregion
 
-    [HttpGet("test/{id?}")]
-    public IEnumerable<WeatherForecast> Get(int id)
-    {
-
-        Console.WriteLine(this._configuration.GetValue<string>("AllowedHosts"));
-        var re = Enumerable.Range(1, 5).Select(v=>"No:"+v).ToString();
-        Console.WriteLine(re);
-        _logger.LogInformation("开始了访问");
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
-    }
-
     [HttpGet("student/{name}")]
     public IActionResult GetInfo(string name)
     {
@@ -60,20 +41,20 @@ public class LszController : ControllerBase
     }
     
     [HttpGet("student")]
-    public Dictionary<int,Student> GetAll()
+    public Dictionary<int,student> GetAll()
     {
         return _studentService.searchALl();
     }
     
     [HttpPost("student")]
-    public IActionResult addStudent(Student s)
+    public IActionResult addStudent(student s)
     {
         _studentService.add(s);
         return Ok(200);
     }
     
     [HttpDelete("student")]
-    public IActionResult delStudent(Student s)
+    public IActionResult delStudent(student s)
     {
         if (_studentService.delete(s))
         {
@@ -88,9 +69,9 @@ public class LszController : ControllerBase
 
 
     [HttpPost("studentAll")]
-    public async Task<List<Student>>  getStudentAll()
+    public async Task<List<student>>  getStudentAll()
     {
-        List<Student> list = await this._db.Queryable<Student>().ToListAsync();
+        List<student> list = await this._db.Queryable<student>().ToListAsync();
         return list;
     }
 

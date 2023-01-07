@@ -8,10 +8,10 @@ namespace Models
     ///<summary>
     ///
     ///</summary>
-    [SugarTable("student")]
-    public partial class student
+    [SugarTable("score")]
+    public partial class score
     {
-           public student(){
+           public score(){
 
 
            }
@@ -28,14 +28,35 @@ namespace Models
            /// Default:NULL
            /// Nullable:True
            /// </summary>           
-           public string name {get;set;}
+           public int? student_id {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:NULL
            /// Nullable:True
            /// </summary>           
-           public byte? sex {get;set;}
+           public int? shuxue {get;set;}
+
+           /// <summary>
+           /// Desc:
+           /// Default:NULL
+           /// Nullable:True
+           /// </summary>           
+           public int? yuwen {get;set;}
+
+           /// <summary>
+           /// Desc:
+           /// Default:NULL
+           /// Nullable:True
+           /// </summary>           
+           public int? english {get;set;}
+
+           /// <summary>
+           /// Desc:
+           /// Default:NULL
+           /// Nullable:True
+           /// </summary>           
+           public int? tiyu {get;set;}
 
            /// <summary>
            /// Desc:

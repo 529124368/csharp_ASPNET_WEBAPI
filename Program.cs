@@ -1,7 +1,5 @@
 using dotnet.Services;
-using Microsoft.Extensions.Configuration;
 using SqlSugarHelper;
-
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddControllers();

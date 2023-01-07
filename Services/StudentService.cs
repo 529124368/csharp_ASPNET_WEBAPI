@@ -1,19 +1,24 @@
 ﻿using dotnet.Controllers;
-using dotnet.Models;
+using Models;
+using SqlSugar;
+
 namespace dotnet.Services;
 
 public class StudentService
 {
-    private static Dictionary<int,Student> box=new Dictionary<int, Student>();
+    private static Dictionary<int, student> box=new Dictionary<int, student>();
     private readonly ILogger<LszController> _logger;
-    public StudentService(ILogger<LszController> logger)
+    private readonly SqlSugarScope _db;
+    public StudentService(ILogger<LszController> logger, ISqlSugarClient db)
     {
-        _logger = logger;
-        Console.WriteLine("StudentService创建了");
+        this._logger = logger;
+        this._db = (SqlSugarScope)db;
     }
 
-    public void add(Student s)
+    public void add(student s)
     {
+        Console.WriteLine(this._db.Insertable<student>(s).ExecuteCommand());
+
         if (checkData(s))
         {
             box.Add(box.Count+1,s);
@@ -26,7 +31,7 @@ public class StudentService
         
     }
     
-    public bool delete(Student s)
+    public bool delete(student s)
     {
         try
         {
@@ -41,23 +46,23 @@ public class StudentService
         }
     }
     
-    public void update(Student s)
+    public void update(student s)
     {
        
     }
-    public Student search(string name)
+    public student search(string name)
     {
         var s = box.FirstOrDefault(v => v.Value.name == name);
         return s.Value;
     }
     
-    public Dictionary<int,Student> searchALl()
+    public Dictionary<int, student> searchALl()
     {
         return box;
     }
 
     #region 数据检测
-    private bool checkData(Student s)
+    private bool checkData(student s)
     {
         var res = box.FirstOrDefault(v => v.Value.name == s.name);
         if (res.Value is null)

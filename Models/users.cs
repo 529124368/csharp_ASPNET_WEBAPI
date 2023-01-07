@@ -8,10 +8,10 @@ namespace Models
     ///<summary>
     ///
     ///</summary>
-    [SugarTable("user")]
-    public partial class user
+    [SugarTable("users")]
+    public partial class users
     {
-           public user(){
+           public users(){
 
 
            }
@@ -43,6 +43,20 @@ namespace Models
            /// Nullable:True
            /// </summary>           
            public int? student_id {get;set;}
+
+           /// <summary>
+           /// Desc:
+           /// Default:
+           /// Nullable:False
+           /// </summary>           
+           public DateTime insert_time {get;set;}
+
+           /// <summary>
+           /// Desc:
+           /// Default:NULL
+           /// Nullable:True
+           /// </summary>           
+           public DateTime? update_time {get;set;}
 
     }
 }
