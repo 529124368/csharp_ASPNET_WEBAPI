@@ -6,7 +6,6 @@ namespace dotnet.Services;
 
 public class StudentService
 {
-    private static Dictionary<int, student> box=new Dictionary<int, student>();
     private readonly ILogger<LszController> _logger;
     private readonly SqlSugarScope _db;
     public StudentService(ILogger<LszController> logger, ISqlSugarClient db)
@@ -17,17 +16,9 @@ public class StudentService
 
     public void add(student s)
     {
-        Console.WriteLine(this._db.Insertable<student>(s).ExecuteCommand());
+        this._db.Insertable(s).ExecuteCommand();
 
-        if (checkData(s))
-        {
-            box.Add(box.Count+1,s);
-            _logger.LogInformation($"{DateTime.Now}:学生{s.name}信息添加成功");
-        }
-        else
-        {
-            _logger.LogInformation($"{DateTime.Now}:学生{s.name}信息添加不成功");
-        }
+        _logger.LogInformation($"{DateTime.Now}:学生{s.name}信息添加成功");
         
     }
     
@@ -35,8 +26,14 @@ public class StudentService
     {
         try
         {
-            var res = box.FirstOrDefault(v => v.Value.name == s.name);
-            Console.WriteLine($"key是{res.Key},值得名字是{res.Value.name}");
+            if(this._db.Deleteable<student>().Where(v => v.id == s.id).ExecuteCommand() != 0 )
+            {
+                Console.WriteLine($"学生ID为{s.id}的信息删除了");
+            }else
+            {
+                Console.WriteLine($"学生ID为{s.id}的信息删除失败了");
+            }
+            
             return true;
         }
         catch (Exception e)
@@ -46,30 +43,19 @@ public class StudentService
         }
     }
     
-    public void update(student s)
+    public int update(student s)
     {
-       
-    }
-    public student search(string name)
-    {
-        var s = box.FirstOrDefault(v => v.Value.name == name);
-        return s.Value;
-    }
-    
-    public Dictionary<int, student> searchALl()
-    {
-        return box;
+       return this._db.Updateable<student>(s).ExecuteCommand();
     }
 
-    #region 数据检测
-    private bool checkData(student s)
+    public List<student> search(string name)
     {
-        var res = box.FirstOrDefault(v => v.Value.name == s.name);
-        if (res.Value is null)
-        {
-            return true;
-        }
-        return false;
+        return this._db.Queryable<student>().Where(v=>v.name ==name).ToList();
     }
-    #endregion
+    
+    public async Task<List<student>> searchALl()
+    {
+        return  await this._db.Queryable<student>().ToListAsync();
+    }
+
 }

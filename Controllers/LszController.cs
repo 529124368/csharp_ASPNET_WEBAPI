@@ -41,9 +41,9 @@ public class LszController : ControllerBase
     }
     
     [HttpGet("student")]
-    public Dictionary<int,student> GetAll()
+    public async Task <List<student>> GetAll()
     {
-        return _studentService.searchALl();
+        return await _studentService.searchALl();
     }
     
     [HttpPost("student")]
@@ -68,17 +68,16 @@ public class LszController : ControllerBase
     }
 
 
-    [HttpPost("studentAll")]
-    public async Task<List<student>>  getStudentAll()
+    [HttpPut("student")]
+    public IActionResult updateStduent(student s)
     {
-        List<student> list = await this._db.Queryable<student>().ToListAsync();
-        return list;
+        return Ok(_studentService.update(s));
     }
-
 
     [HttpPost("check")]
     public bool isConne()
     {
+        //数据库实体批量生成class
         this._db.DbFirst.IsCreateAttribute().CreateClassFile("C:\\Users\\Administrator\\Desktop\\dotnet\\Models\\", "Models");
         return _db.Ado.IsValidConnection();
     }
