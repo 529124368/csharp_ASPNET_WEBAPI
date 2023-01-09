@@ -41,22 +41,22 @@ public class LszController : ControllerBase
     }
     
     [HttpGet("student")]
-    public async Task <List<student>> GetAll()
+    public async Task <List<students>> GetAll()
     {
         return await _studentService.searchALl();
     }
     
     [HttpPost("student")]
-    public IActionResult addStudent(student s)
+    public IActionResult addStudent(students s)
     {
         _studentService.add(s);
         return Ok(200);
     }
     
     [HttpDelete("student")]
-    public IActionResult delStudent(student s)
+    public IActionResult delStudent(int id)
     {
-        if (_studentService.delete(s))
+        if (_studentService.delete(id))
         {
             Console.WriteLine("删除成功");
         }
@@ -69,7 +69,7 @@ public class LszController : ControllerBase
 
 
     [HttpPut("student")]
-    public IActionResult updateStduent(student s)
+    public IActionResult updateStduent(students s)
     {
         return Ok(_studentService.update(s));
     }

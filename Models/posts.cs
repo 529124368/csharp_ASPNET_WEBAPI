@@ -8,10 +8,10 @@ namespace Models
     ///<summary>
     ///
     ///</summary>
-    [SugarTable("users")]
-    public partial class users
+    [SugarTable("posts")]
+    public partial class posts
     {
-           public users(){
+           public posts(){
 
 
            }
@@ -28,35 +28,21 @@ namespace Models
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public string name {get;set;}
+           public string title {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public string email {get;set;}
-
-           /// <summary>
-           /// Desc:
-           /// Default:
-           /// Nullable:True
-           /// </summary>           
-           public DateTime? email_verified_at {get;set;}
+           public string content {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public string password {get;set;}
-
-           /// <summary>
-           /// Desc:
-           /// Default:
-           /// Nullable:True
-           /// </summary>           
-           public string remember_token {get;set;}
+           public string author {get;set;}
 
            /// <summary>
            /// Desc:

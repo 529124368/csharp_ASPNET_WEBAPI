@@ -8,10 +8,10 @@ namespace Models
     ///<summary>
     ///
     ///</summary>
-    [SugarTable("users")]
-    public partial class users
+    [SugarTable("students")]
+    public partial class students
     {
-           public users(){
+           public students(){
 
 
            }
@@ -21,7 +21,7 @@ namespace Models
            /// Nullable:False
            /// </summary>           
            [SugarColumn(IsPrimaryKey=true,IsIdentity=true)]
-           public object id {get;set;}
+           public int id {get;set;}
 
            /// <summary>
            /// Desc:
@@ -35,28 +35,14 @@ namespace Models
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public string email {get;set;}
-
-           /// <summary>
-           /// Desc:
-           /// Default:
-           /// Nullable:True
-           /// </summary>           
-           public DateTime? email_verified_at {get;set;}
+           public byte sex {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public string password {get;set;}
-
-           /// <summary>
-           /// Desc:
-           /// Default:
-           /// Nullable:True
-           /// </summary>           
-           public string remember_token {get;set;}
+           public int score {get;set;}
 
            /// <summary>
            /// Desc:

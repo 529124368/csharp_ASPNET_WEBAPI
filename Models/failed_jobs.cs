@@ -8,10 +8,10 @@ namespace Models
     ///<summary>
     ///
     ///</summary>
-    [SugarTable("users")]
-    public partial class users
+    [SugarTable("failed_jobs")]
+    public partial class failed_jobs
     {
-           public users(){
+           public failed_jobs(){
 
 
            }
@@ -28,49 +28,42 @@ namespace Models
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public string name {get;set;}
+           public string uuid {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public string email {get;set;}
-
-           /// <summary>
-           /// Desc:
-           /// Default:
-           /// Nullable:True
-           /// </summary>           
-           public DateTime? email_verified_at {get;set;}
+           public string connection {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public string password {get;set;}
+           public string queue {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
-           /// Nullable:True
+           /// Nullable:False
            /// </summary>           
-           public string remember_token {get;set;}
+           public string payload {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
-           /// Nullable:True
+           /// Nullable:False
            /// </summary>           
-           public DateTime? created_at {get;set;}
+           public string exception {get;set;}
 
            /// <summary>
            /// Desc:
-           /// Default:
-           /// Nullable:True
+           /// Default:CURRENT_TIMESTAMP
+           /// Nullable:False
            /// </summary>           
-           public DateTime? updated_at {get;set;}
+           public DateTime failed_at {get;set;}
 
     }
 }

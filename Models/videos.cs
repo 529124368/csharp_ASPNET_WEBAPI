@@ -8,10 +8,10 @@ namespace Models
     ///<summary>
     ///
     ///</summary>
-    [SugarTable("student")]
-    public partial class student
+    [SugarTable("videos")]
+    public partial class videos
     {
-           public student(){
+           public videos(){
 
 
            }
@@ -21,35 +21,42 @@ namespace Models
            /// Nullable:False
            /// </summary>           
            [SugarColumn(IsPrimaryKey=true,IsIdentity=true)]
-           public int id {get;set;}
-
-           /// <summary>
-           /// Desc:
-           /// Default:NULL
-           /// Nullable:True
-           /// </summary>           
-           public string name {get;set;}
-
-           /// <summary>
-           /// Desc:
-           /// Default:NULL
-           /// Nullable:True
-           /// </summary>           
-           public byte? sex {get;set;}
+           public object id {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public DateTime insert_time {get;set;}
+           public string title {get;set;}
 
            /// <summary>
            /// Desc:
-           /// Default:NULL
+           /// Default:
+           /// Nullable:False
+           /// </summary>           
+           public string content {get;set;}
+
+           /// <summary>
+           /// Desc:
+           /// Default:
            /// Nullable:True
            /// </summary>           
-           public DateTime? update_time {get;set;}
+           public DateTime? deleted_at {get;set;}
+
+           /// <summary>
+           /// Desc:
+           /// Default:
+           /// Nullable:True
+           /// </summary>           
+           public DateTime? created_at {get;set;}
+
+           /// <summary>
+           /// Desc:
+           /// Default:
+           /// Nullable:True
+           /// </summary>           
+           public DateTime? updated_at {get;set;}
 
     }
 }

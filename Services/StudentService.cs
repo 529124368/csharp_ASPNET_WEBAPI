@@ -14,7 +14,7 @@ public class StudentService
         this._db = (SqlSugarScope)db;
     }
 
-    public void add(student s)
+    public void add(students s)
     {
         this._db.Insertable(s).ExecuteCommand();
 
@@ -22,16 +22,16 @@ public class StudentService
         
     }
     
-    public bool delete(student s)
+    public bool delete(int studentId)
     {
         try
         {
-            if(this._db.Deleteable<student>().Where(v => v.id == s.id).ExecuteCommand() != 0 )
+            if(this._db.Deleteable<students>().Where(v => v.id == studentId).ExecuteCommand() != 0 )
             {
-                Console.WriteLine($"学生ID为{s.id}的信息删除了");
+                Console.WriteLine($"学生ID为{studentId}的信息删除了");
             }else
             {
-                Console.WriteLine($"学生ID为{s.id}的信息删除失败了");
+                Console.WriteLine($"学生ID为{studentId}的信息删除失败了");
             }
             
             return true;
@@ -43,19 +43,19 @@ public class StudentService
         }
     }
     
-    public int update(student s)
+    public int update(students s)
     {
-       return this._db.Updateable<student>(s).ExecuteCommand();
+       return this._db.Updateable<students>(s).ExecuteCommand();
     }
 
-    public List<student> search(string name)
+    public List<students> search(string name)
     {
-        return this._db.Queryable<student>().Where(v=>v.name ==name).ToList();
+        return this._db.Queryable<students>().Where(v=>v.name ==name).ToList();
     }
     
-    public async Task<List<student>> searchALl()
+    public async Task<List<students>> searchALl()
     {
-        return  await this._db.Queryable<student>().ToListAsync();
+        return  await this._db.Queryable<students>().ToListAsync();
     }
 
 }

@@ -8,10 +8,10 @@ namespace Models
     ///<summary>
     ///
     ///</summary>
-    [SugarTable("users")]
-    public partial class users
+    [SugarTable("personal_access_tokens")]
+    public partial class personal_access_tokens
     {
-           public users(){
+           public personal_access_tokens(){
 
 
            }
@@ -28,6 +28,20 @@ namespace Models
            /// Default:
            /// Nullable:False
            /// </summary>           
+           public string tokenable_type {get;set;}
+
+           /// <summary>
+           /// Desc:
+           /// Default:
+           /// Nullable:False
+           /// </summary>           
+           public object tokenable_id {get;set;}
+
+           /// <summary>
+           /// Desc:
+           /// Default:
+           /// Nullable:False
+           /// </summary>           
            public string name {get;set;}
 
            /// <summary>
@@ -35,28 +49,21 @@ namespace Models
            /// Default:
            /// Nullable:False
            /// </summary>           
-           public string email {get;set;}
+           public string token {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:True
            /// </summary>           
-           public DateTime? email_verified_at {get;set;}
-
-           /// <summary>
-           /// Desc:
-           /// Default:
-           /// Nullable:False
-           /// </summary>           
-           public string password {get;set;}
+           public string abilities {get;set;}
 
            /// <summary>
            /// Desc:
            /// Default:
            /// Nullable:True
            /// </summary>           
-           public string remember_token {get;set;}
+           public DateTime? last_used_at {get;set;}
 
            /// <summary>
            /// Desc:
