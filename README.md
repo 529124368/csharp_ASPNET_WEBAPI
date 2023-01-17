@@ -6,5 +6,7 @@ ASP.NET webapi框架，开发的CRUD API
 
 参数 /p:DebugType=None /p:DebugSymbols=false 设置不产生debug文件
 
-dotnet publish /p:DebugType=None /p:DebugSymbols=false --self-contained --configuration Release --runtime win7-x64 --output myapp
++ dotnet publish /p:DebugType=None /p:DebugSymbols=false --self-contained true --configuration Release --runtime win-x64 --output myapp
+
++ dotnet publish /p:DebugType=None /p:DebugSymbols=false --self-contained  true-c Release -r linux-x64 --output myapp
 
