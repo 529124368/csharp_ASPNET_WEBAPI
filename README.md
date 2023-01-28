@@ -10,3 +10,7 @@ ASP.NET webapi框架，开发的CRUD API
 
 + dotnet publish /p:DebugType=None /p:DebugSymbols=false --self-contained  true-c Release -r linux-x64 --output myapp
 
+
+资料
+https://www.cnblogs.com/chillsrc/articles/16818386.html
+
