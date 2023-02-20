@@ -14,3 +14,19 @@ ASP.NET webapi框架，开发的CRUD API
 资料
 https://www.cnblogs.com/chillsrc/articles/16818386.html
 
+
+```
+c# sqlsugar
+https://www.donet5.com/home/Doc?typeId=1189
+
+<PublishAot>true</PublishAot>
+
+
+winform的aot编译
+https://github.com/kant2002/WinFormsComInterop
+
+c# 防反编译
+https://blog.csdn.net/daremeself/article/details/127948674
+```
+
+
