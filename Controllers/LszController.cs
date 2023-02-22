@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Models;
 using SqlSugar;
 
+
 namespace dotnet.Controllers;
 
 [Route("api")]
@@ -43,6 +44,9 @@ public class LszController : ControllerBase
     [HttpGet("student")]
     public async Task <List<students>> GetAll()
     {
+        //bcrypt加密 校验
+        bool res = BCrypt.Net.BCrypt.Verify("1232132", "$2y$10$avr9VUcAw6zRlO635qH3Se4EPxksRYhj9hySfuxSsA9Ce.ymIP2Xe");
+        Console.WriteLine(res);
         return await _studentService.searchALl();
     }
     
